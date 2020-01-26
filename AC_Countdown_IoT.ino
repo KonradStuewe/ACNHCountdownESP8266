@@ -94,8 +94,6 @@ void TCA9548A(uint8_t bus)
   Wire.beginTransmission(0x70);
   Wire.write(1 << bus);
   Wire.endTransmission();
-  //Serial.print("I2C bus: ");
-  //Serial.println(bus);
 }
 
 void setup(void) {
@@ -116,7 +114,6 @@ void setup(void) {
   
   TCA9548A(4);
   picture.begin();
-  ////picture.setContrast(1);
   picture.setDisplayRotation(U8G2_R2);
   picture.firstPage();
   do {
@@ -126,7 +123,6 @@ void setup(void) {
 
   TCA9548A(5);
   u8g2_big.begin();
-  //u8g2_big.setContrast(1);
   u8g2_big.setDisplayRotation(U8G2_R2);
   u8g2_big.setFont(u8g2_font_osb29_tr);
   u8g2_big.setCursor(12,32);
@@ -137,7 +133,6 @@ void setup(void) {
 
   TCA9548A(6);
   u8g2_small.begin();
-  //u8g2_small.setContrast(1);
   u8g2_small.setDisplayRotation(U8G2_R2);
   u8g2_small.setFont(u8g2_font_osb29_tr);
   u8g2_small.setCursor(15,32);
@@ -174,9 +169,9 @@ void setup(void) {
     u8g2_big.sendBuffer();
     strcat(wait, ".");
 
-    digitalWrite(LED_BUILTIN, LOW);   // turn the LED on (HIGH is the voltage level)
-    delay(250);                       // wait for a second
-    digitalWrite(LED_BUILTIN, HIGH);  
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(250);
+    digitalWrite(LED_BUILTIN, HIGH);
   }
 
   
@@ -187,21 +182,12 @@ void setup(void) {
 }
 
 void loop(void) {
-  //value = analogRead(A0);
-  //Serial.print("Light: ");
-  //Serial.println(value);
-  
   timeClient.update();
   int utcCalc = 1584662400 - timeClient.getEpochTime();
 
   TCA9548A(0);
   
   u8g2_big.clearBuffer();
-  //if(value < 256){
-  //  u8g2_big.setContrast(1);
-  //} else {
-  //  u8g2_big.setContrast(255);
-  //}
   u8g2_big.setFont(u8g2_font_inb63_mn);
   u8g2_big.setFontDirection(0);
   u8g2_big.setCursor(0,64);
@@ -214,11 +200,6 @@ void loop(void) {
   TCA9548A(1);
 
   u8g2_small.clearBuffer();
-  //if(value < 256){
-  //  u8g2_small.setContrast(1);
-  //} else {
-  //  u8g2_small.setContrast(255);
-  //}
   u8g2_small.setFont(u8g2_font_inb63_mn);
   u8g2_small.setFontDirection(0);
   u8g2_small.setCursor(0,64);
@@ -231,11 +212,6 @@ void loop(void) {
   TCA9548A(2);
 
   u8g2_small.clearBuffer();
-  //if(value < 256){
-  //  u8g2_small.setContrast(1);
-  //} else {
-  //  u8g2_small.setContrast(255);
-  //}
   u8g2_small.setFont(u8g2_font_inb63_mn);
   u8g2_small.setFontDirection(0);
   u8g2_small.setCursor(0,64);
@@ -248,11 +224,6 @@ void loop(void) {
   TCA9548A(3);
 
   u8g2_small.clearBuffer();
-  //if(value < 256){
-  //  u8g2_small.setContrast(1);
-  //} else {
-  //  u8g2_small.setContrast(255);
-  //}
   u8g2_small.setFont(u8g2_font_inb63_mn);
   u8g2_small.setFontDirection(0);
   u8g2_small.setCursor(0,64);
