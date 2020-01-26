@@ -80,8 +80,10 @@ static const unsigned char u8g2_logo_97x51_bits[] U8X8_PROGMEM = {
   0x00, 0xF8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
   };
 
-char ssid[] = "X-1036";
-char pass[] = "F681-E893-9049-0F56-DBD3";
+#Replace these with your ssid and password
+
+char ssid[] = "ADD-SSID-HERE";
+char pass[] = "ADD-PASSWORD-HERE";
 
 WiFiUDP ntpUDP;
 
